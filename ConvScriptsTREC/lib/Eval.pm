@@ -1,3 +1,9 @@
+#
+# This is code is released under the
+# Apache License Version 2.0 http://www.apache.org/licenses/.
+#
+# (c) Leonid Boytsov, http://boytsov.info
+#
 sub Median {
     my $ArrRef = shift;
 
