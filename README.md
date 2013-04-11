@@ -1,16 +1,17 @@
 PermTest
 ========
 
-Permutation tests for unadjusted pair-wise significance testing and multiple comparison adjustments
+Permutation algorithms for unadjusted pair-wise significance testing and multiple comparison adjustments
 
  EvalUtil
-    The binary utility permtest. It accepts a matrix of performance scores. Each row
-    represent one method. Column i represents performance scores for the i-th query.
+    The test program itself: permtest. It accepts a matrix of performance scores (ERR, MAP, etc). 
+    Each row of the matrix represent one retrieval method (called run in TREC terminology). 
+    Column I represents performance scores for the I-th query.
 
  ConvScripts
     Scripts to convert TREC output file (to the matrix format). Each script accepts a registry file,
-    which lists names of the files with outputs of TREC utility. One file per retrieval method:
-    or, per run in TREC terminology.
+    which lists names of the files with outputs of TREC utility. One file per retrieval method,
+    or, in other words per TREC run.
     
 
  For more details see:
