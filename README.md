@@ -2,6 +2,7 @@ PermTest
 ========
 
 Permutation algorithms for unadjusted pair-wise significance testing and multiple comparison adjustments
+The code is released under the Apache License Version 2.0 http://www.apache.org/licenses/.
 
  EvalUtil
     The test program itself: permtest. It accepts a matrix of performance scores (ERR, MAP, etc). 
