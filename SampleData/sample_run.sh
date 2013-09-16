@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# 1. Step convert output of TREC evaluation utlities to matrix format.
+# 1. Convert output of TREC evaluation utilities to matrix format.
 #    The TREC utilities supported:
 #       i) trec_eval      http://trec.nist.gov/trec_eval/
 #       ii) gdeval        http://trec.nist.gov/data/web10.html
 #
-#    You can use the data in the matrix format directly.
 #    Metrics are classic IR evaluation metrics:
 #
 #    err    -  Expected Reciprocal Rank
@@ -13,6 +12,10 @@
 #    P_10   - Precision at ten
 #    Rprec  - R-precision
 #
+#    You can use the matrix FORMAT directly.
+#    i) The number of rows in the matrix is equal to the number of methods
+#    ii) The number of columns in the matrix is equal to the number of queries
+#    iii) Row X, column Y represents a performance metric measured for query Y and system X
 #    
 #
 
@@ -68,6 +71,12 @@ for metric in map err ndcg P_10 Rprec ; do
 done
 
 # 6. Printing some values for comparison
+#    The output matrix format (matrix should be symmetric):
+#    row X and column Y gives the p-value corresponding to the hypothesis that system X is different from Y
+#
+#    In the case of the BASELINE comparison, systems are compared only against the baseline.
+#    Therefore, only the row $BaselineId and the column $BaselineId contain non-zero values. 
+#    The p-values where neither column nor row is $BaselineId are zero (and should be ignored).
 
 echo "Compare unadjusted p-values, and p-values adjusted for multiplicity"
 echo "Unadjusted (ERR):"
