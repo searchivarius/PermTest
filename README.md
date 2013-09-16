@@ -17,11 +17,14 @@ The code is released under the Apache License Version 2.0 http://www.apache.org/
     or, in other words per TREC run.
 
  More detail (a working example):
+ 
     To see how it works 
+    
     1) Compute the Eval util
     2) Go to the directory SampleData
     3) Run the shell script sample_run.sh
     4) Read the comments inside the script
+
 
  For technical/theoretical details see:
  
