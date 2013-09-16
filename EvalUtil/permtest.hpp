@@ -841,7 +841,7 @@ CMultiplePerm::DoStat(size_t PermQty, ostream& OutFile,
     vector<vector<FloatType> >      vvStatMatr(mMethQty, vector<FloatType>(mMethQty));
     vector<vector<size_t> >         vvEqualOrGreaterQty(mMethQty, vector<size_t>(mMethQty));
 
-    ofstream OutStat("outstat.csv");
+    //ofstream OutStat("outstat.csv");
 
     if (mMethQty < 2) {
         throw runtime_error("There should be at least 2 rows!");
@@ -886,7 +886,7 @@ CMultiplePerm::DoStat(size_t PermQty, ostream& OutFile,
     for (unsigned i = 0; i < mMethQty; ++i)  {
         for (unsigned j = 0; j < mMethQty; ++j)  {
             FloatType fStat = StatObj(vvSourceDataByRows[i], vvSourceDataByRows[j]);
-            if (j== 0 && i ==1) OutStat << fStat << endl;
+            //if (j== 0 && i ==1) OutStat << fStat << endl;
             fStat = fabs(fStat);
 
             vvStatMatr[i][j] = fStat;
@@ -958,7 +958,7 @@ CMultiplePerm::DoStat(size_t PermQty, ostream& OutFile,
             for (unsigned i = 0; i < mMethQty; ++i)  {
                 for (unsigned j = 0; j < i; ++j)  {
                     FloatType Delta = StatObj(vvCurrVals[i], vvCurrVals[j]);
-                    if (j== 0 && i ==1) OutStat << Delta << endl;
+                    //if (j== 0 && i ==1) OutStat << Delta << endl;
                     Delta = fabs(Delta);
 
                     if (Delta >= vvStatMatr[i][j]) {

@@ -15,9 +15,15 @@ The code is released under the Apache License Version 2.0 http://www.apache.org/
     Scripts to convert TREC output file (to the matrix format). Each script accepts a registry file,
     which lists names of the files with outputs of TREC utility. One file per retrieval method,
     or, in other words per TREC run.
-    
 
- For more details see:
+ More detail (a working example):
+    To see how it works 
+    1) Compute the Eval util
+    2) Go to the directory SampleData
+    3) Run the shell script sample_run.sh
+    4) Read the comments inside the script
+
+ For technical/theoretical details see:
  
    Leonid Boytsov, Anna Belova, Peter Westfall, 2013, 
    Deciding on an Adjustment for Multiplicity in IR Experiments.

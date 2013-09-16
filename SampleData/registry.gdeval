@@ -1,0 +1,4 @@
+InputInTrecFormat/BM25_bm25.gdeval
+InputInTrecFormat/BM25_bm25_pagerank.gdeval
+InputInTrecFormat/BM25_bm25_morph.gdeval
+InputInTrecFormat/BM25_bm25_closepair.gdeval

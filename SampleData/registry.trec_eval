@@ -1,0 +1,4 @@
+InputInTrecFormat/BM25_bm25.trec_eval
+InputInTrecFormat/BM25_bm25_pagerank.trec_eval
+InputInTrecFormat/BM25_bm25_morph.trec_eval
+InputInTrecFormat/BM25_bm25_closepair.trec_eval
