@@ -1,4 +1,7 @@
 #!/bin/bash
+cd ../EvalUtil
+make
+cd -
 
 # 1. Convert output of TREC evaluation utilities to matrix format.
 #    The TREC utilities supported:
