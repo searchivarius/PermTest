@@ -22,6 +22,100 @@
 
 using namespace std;
 
+FloatType CalcFscore(const std::vector<FloatType>& vVal, const std::vector<FloatType>& labels) {
+    unsigned    N = vVal.size();
+
+    if (N != labels.size()) {
+        stringstream err;
+        err << "Internal error, vector qty doesn't match the # of labels: " << vVal.size() << " vs. " << labels.size();
+
+        throw runtime_error(err.str());
+    }
+
+    FloatType   recall = 0, precision = 0; 
+    unsigned    qtyPrecision = 0, qtyRecall = 0;
+
+    for (unsigned i = 0; i < N; ++i) {
+        FloatType v = vVal[i];
+        FloatType l = labels[i];
+
+        if (l > 0.5) {
+          recall += v;
+          ++qtyRecall;
+        }
+
+        if (v > 0.5) {
+          ++qtyPrecision;
+          precision += l;
+        }
+    }
+
+    if (qtyRecall) {
+      recall /= qtyRecall;
+    }
+
+    if (qtyPrecision) {
+      precision /= qtyPrecision;
+    }
+    
+
+    FloatType f = 2*recall*precision/(precision + recall);
+
+    //cout << "prec: " << precision << " recall: " << recall << " f: " << f << endl;
+
+    return f;
+}
+
+FloatType CalcAccuracy(const std::vector<FloatType>& vVal, const std::vector<FloatType>& labels) {
+    unsigned    N = vVal.size();
+
+    if (N != labels.size()) {
+        stringstream err;
+        err << "Internal error, vector qty doesn't match the # of labels: " << vVal.size() << " vs. " << labels.size();
+
+        throw runtime_error(err.str());
+    }
+    FloatType    match = 0;
+
+    for (unsigned i = 0; i < N; ++i) {
+        FloatType v = vVal[i];
+        FloatType l = labels[i];
+
+        if (fabs(v - l) < 1e-5) {
+          match += 1;
+        }
+    }
+
+    FloatType acc =  match / N;
+    //cout << "accuracy: " << acc << endl;
+
+    return acc;
+}
+
+FloatType 
+CFScoreStat::operator()(const vector<FloatType>& vVal1, const vector<FloatType>& vVal2) const
+{
+    if (vVal1.size() != vVal2.size()) {
+        stringstream err;
+        err << "Internal error, vector quantities are not equal: " << vVal1.size() << " vs. " <<  vVal2.size();
+
+        throw runtime_error(err.str());
+    }
+    return CalcFscore(vVal1, labels) - CalcFscore(vVal2, labels);
+}
+
+FloatType 
+CAccuracyStat::operator()(const vector<FloatType>& vVal1, const vector<FloatType>& vVal2) const
+{
+    if (vVal1.size() != vVal2.size()) {
+        stringstream err;
+        err << "Internal error, vector quantities are not equal: " << vVal1.size() << " vs. " <<  vVal2.size();
+
+        throw runtime_error(err.str());
+    }
+    return CalcAccuracy(vVal1, labels) - CalcFscore(vVal2, labels);
+}
+
 FloatType 
 CSampleMean::operator()(const vector<FloatType>& vVal1, const vector<FloatType>& vVal2) const
 {
@@ -29,7 +123,7 @@ CSampleMean::operator()(const vector<FloatType>& vVal1, const vector<FloatType>&
 
     if (N != vVal2.size()) {
         stringstream err;
-        err << "Internal error, vector quantities are not equal: " << vVal1.size() << " vs. vVal2.size() ";
+        err << "Internal error, vector quantities are not equal: " << vVal1.size() << " vs. " << vVal2.size() ;
 
         throw runtime_error(err.str());
     }
@@ -50,7 +144,7 @@ CTStat::operator()(const vector<FloatType>& vVal1, const vector<FloatType>& vVal
 
     if (N != vVal2.size()) {
         stringstream err;
-        err << "Internal error, vector quantities are not equal: " << vVal1.size() << " vs. vVal2.size() ";
+        err << "Internal error, vector quantities are not equal: " << vVal1.size() << " vs.  " <<vVal2.size();
 
         throw runtime_error(err.str());
     }

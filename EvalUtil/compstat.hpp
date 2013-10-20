@@ -27,6 +27,28 @@ struct CTStat {
     FloatType operator()(const std::vector<FloatType>& vVal1, const std::vector<FloatType>& vVal2) const;
 };
 
+/*
+ * F-score for binary classification.
+ */
+struct CFScoreStat {
+    CFScoreStat(const std::vector<FloatType>& labels) : labels(labels) {}
+    FloatType operator()(const std::vector<FloatType>& vVal1, const std::vector<FloatType>& vVal2) const;
+
+    const std::vector<FloatType> labels;
+};
+
+/*
+ * Accuracy for binary classification.
+ */
+struct CAccuracyStat {
+    CAccuracyStat(const std::vector<FloatType>& labels) : labels(labels) {}
+    FloatType operator()(const std::vector<FloatType>& vVal1, const std::vector<FloatType>& vVal2) const;
+
+    const std::vector<FloatType> labels;
+};
+
+FloatType CalcFscore(const std::vector<FloatType>& vVal, const std::vector<FloatType>& labels);
+FloatType CalcAccuracy(const std::vector<FloatType>& vVal, const std::vector<FloatType>& labels);
 FloatType CalcSTD(const std::vector<FloatType>& vVal);
 FloatType CalcMean(const std::vector<FloatType>& vVal);
 

@@ -32,8 +32,10 @@
 #define PROC_CLOSED         "cls"
 #define PROC_CLOSED_FRONT   "clsf"
 
-#define STAT_MEAN   "mean"
-#define STAT_TSTAT  "t"
+#define STAT_MEAN     "mean"
+#define STAT_TSTAT    "t"
+#define STAT_FSCORE   "fscore"
+#define STAT_ACC      "acc"
 
 const size_t DefaultPermNum     = 100000;
 const string DefaultAdjustType  = ADJUST_BASELINE;
@@ -68,7 +70,11 @@ void Usage(const char *p, const char *err) {
                               "\t\t\t[-t --threshpval <the minimal p-value for the adaptive approximation of the closed test> ] " <<  endl << 
                               "\t\t\t[-p --maxpval <the maximum p-value, specifying maxpval allows one to decrease run-time by 10-20\% sometimes> ] " <<  endl << 
                               "\t\t\t[-i --pvalimp <the imputed p-value for the frontier-based method, should be greater than maxpval> ] " <<  endl << 
-                              "\t\t\t[-s --stat <statistic: " STAT_MEAN ", " STAT_TSTAT "> default: " << DefaultStatType << "] " <<  endl << 
+                              "\t\t\t[-s --stat <statistic: " STAT_MEAN ", " STAT_TSTAT ", " STAT_FSCORE ", " STAT_ACC " > default: " << DefaultStatType << "] " <<  endl << 
+                              "\t\t\t\tNOTE: " STAT_FSCORE " and " STAT_ACC  " should be used for binary classification only!" << endl <<
+                              "\t\t\t\t      The first row always represents ground truth labels." << endl <<
+                              "\t\t\t\t      Other rows contains labels selected by classifiers," << endl <<
+                              "\t\t\t\t      (each row corresponds to an outcome of a single classifier)." << endl <<
                                 endl;
     exit(1);
 };
@@ -91,8 +97,23 @@ static struct option aLongOpts[] = {
 
 enum EAvailStatType {
     kSampleMean,
-    kTStat
+    kTStat,
+    kFScore,
+    kAccuracy
 };
+
+string GetStatName(EAvailStatType type) {
+  switch (type) {
+    case kSampleMean: return STAT_MEAN;
+    case kTStat:      return STAT_TSTAT;
+    case kFScore:     return STAT_FSCORE;
+    case kAccuracy:   return STAT_ACC;
+    default: break; 
+  }
+  cerr << "Unknown statistic type: " << type << " ... aborting" << endl;
+  exit(1);
+  return "";
+}
 
 enum EProcType {
     kProcNone,
@@ -217,6 +238,10 @@ int main(int argc, char * pArgv[]) {
         eStatType = kSampleMean;
     } else if (STAT_TSTAT == StatType) {
         eStatType = kTStat;
+    } else if (STAT_FSCORE == StatType) {
+        eStatType = kFScore;
+    } else if (STAT_ACC == StatType) {
+        eStatType = kAccuracy;
     } else {
         Usage(pArgv[0], ("Invalid statistic type: " + StatType).c_str());
     }
@@ -253,7 +278,7 @@ int main(int argc, char * pArgv[]) {
             cout << "Extra work coeff.: " << ExtraWorkCoeff << endl;
         }
     }
-    cout << "Statistic      : " << (eStatType == kSampleMean ? STAT_MEAN : STAT_TSTAT) << endl;
+    cout << "Statistic      : " << GetStatName(eStatType) << endl;
     cout << "Verbosity level : " << VerbosityLevel << endl;
     
 
@@ -281,8 +306,20 @@ int main(int argc, char * pArgv[]) {
     try {
         string line;
 
+        bool bFirst = true;
+
+        vector<FloatType> labels;
+
         while (getline(InpFile, line)) {
-            Perm.AddObservRow(line);
+            if ((eStatType == kAccuracy || eStatType == kFScore) && bFirst) {
+              if (!ReadVec(line, labels)) {
+                cerr << "Cannot read labels (from the first line)" << endl;
+                return -1;
+              }
+            } else {
+              Perm.AddObservRow(line);
+            }
+            bFirst = false;
         }
 
         if (Perm.GetMethQty() <= BaselineId && bOnlyBaselineAdj) {
@@ -323,8 +360,14 @@ int main(int argc, char * pArgv[]) {
             if (kSampleMean == eStatType) {
                 Perm.DoMeanSpeedOptim(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId);
                 //Perm.DoStat(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId, CSampleMean());
-            } else {
+            } else if (kTStat == eStatType) {
                 Perm.DoStat(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId, CTStat());
+            } else if (kFScore == eStatType) {
+cout << "here" << endl;
+                Perm.DoStat(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId, CFScoreStat(labels));
+            } else if (kAccuracy == eStatType) {
+cout << "here" << endl;
+                Perm.DoStat(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId, CAccuracyStat(labels));
             }
         } else {
             Usage(pArgv[0], "Invalid option combination.");
