@@ -1,7 +1,7 @@
 PermTest
 ========
 
-Permutation algorithms for unadjusted pair-wise significance testing and multiple comparison adjustments    
+Permutation algorithms for unadjusted pair-wise significance testing and testing with adjustment for multiple comparisons.   
 The code is released under the Apache License Version 2.0 http://www.apache.org/licenses/.
 
  EvalUtil:
