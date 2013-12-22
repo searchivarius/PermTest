@@ -1,7 +1,9 @@
 PermTest
 ========
 
-Permutation algorithms for unadjusted pair-wise significance testing and testing with adjustment for multiple comparisons.   
+Permutation algorithms for unadjusted pair-wise significance testing and testing with adjustment for multiple comparisons. This is designed primarily for a standard IR evaluation, where one or more method is represented by vectors of real-value performance scores. Each vector element is a query-specific value of an effectiveness metric such as ERR, NDCG, or MAP. 
+
+
 The code is released under the Apache License Version 2.0 http://www.apache.org/licenses/.
 
  EvalUtil:
@@ -16,11 +18,11 @@ The code is released under the Apache License Version 2.0 http://www.apache.org/
     which lists names of the files with outputs of TREC utility. One file per retrieval method,
     or, in other words per TREC run.
 
- More detail (a working example):
+ A working example:
  
     To see how it works 
     
-    1) Compute the Eval util
+    1) Compile the Eval util
     2) Go to the directory SampleData
     3) Run the shell script sample_run.sh
     4) Read the comments inside the script
@@ -31,4 +33,6 @@ The code is released under the Apache License Version 2.0 http://www.apache.org/
    Leonid Boytsov, Anna Belova, Peter Westfall, 2013, 
    Deciding on an Adjustment for Multiplicity in IR Experiments.
    In Proceedings of SIGIR 2013.
+   
+ If you use our software, please, consider citing this paper.
 
