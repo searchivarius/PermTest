@@ -16,7 +16,7 @@ The code is released under the Apache License Version 2.0 http://www.apache.org/
  
     Scripts to convert TREC output file (to the matrix format). Each script accepts a registry file,
     which lists names of the files, which contain an output of a TREC evalution utility, e.g., trec_eval. 
-    Each such file should contain output of a single retrieval method. In TREC lingo it is called a run.
+    Each such file should represent a single run.
 
  A working example:
  
