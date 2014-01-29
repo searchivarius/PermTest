@@ -28,7 +28,7 @@ Software description
  * The test program itself: permtest. It accepts a matrix of performance scores (ERR, MAP, etc).  
  * Each row of the matrix represent one retrieval method (called run in TREC terminology).  
  * Column I represents performance scores for the I-th query.  
- * In the case of binary classification, all values are 0s and 1s. The first row represents ground truth labels.  
+ * In the case of binary classification, all values are 0s and 1s. **The first** row represents ground truth labels.  
 
 **ConvScripts**:
  
