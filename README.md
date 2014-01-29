@@ -1,10 +1,27 @@
 PermTest
 ========
 
+
+General information
+------------------
+
 Permutation algorithms for unadjusted pair-wise significance testing and testing with adjustment for multiple comparisons. This is designed primarily for a standard IR evaluation, where one or more method is represented by vectors of real-value performance scores. Each vector element is a query-specific value of an effectiveness metric such as ERR, NDCG, or MAP. Additionally, we can compute p-values of the f-score and the accuracy for binary classification. In this case, all the values are 0s and 1s. The first row in the file represents ground truth labels.
 
 
 The code is released under the Apache License Version 2.0 http://www.apache.org/licenses/.
+
+
+ For technical/theoretical details see:
+ 
+   Leonid Boytsov, Anna Belova, Peter Westfall, 2013, 
+   [Deciding on an Adjustment for Multiplicity in IR Experiments.](http://boytsov.info/pubs/sigir2013.pdf)
+   In Proceedings of SIGIR 2013. [**[BibTex]**](http://dblp.uni-trier.de/rec/bibtex/conf/sigir/BoytsovBW13)
+   
+ If you use our software, please, consider citing this paper.
+
+
+Software description
+------------------
 
  EvalUtil:
  
@@ -29,11 +46,4 @@ The code is released under the Apache License Version 2.0 http://www.apache.org/
     4) Read the comments inside the script
 
 
- For technical/theoretical details see:
- 
-   Leonid Boytsov, Anna Belova, Peter Westfall, 2013, 
-   Deciding on an Adjustment for Multiplicity in IR Experiments.
-   In Proceedings of SIGIR 2013.
-   
- If you use our software, please, consider citing this paper.
 
