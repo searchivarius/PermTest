@@ -23,27 +23,26 @@ The code is released under the Apache License Version 2.0 http://www.apache.org/
 Software description
 ------------------
 
- EvalUtil:
- 
-    The test program itself: permtest. It accepts a matrix of performance scores (ERR, MAP, etc). 
-    Each row of the matrix represent one retrieval method (called run in TREC terminology). 
-    Column I represents performance scores for the I-th query. 
-    In the case of binary classification, all values are 0s and 1s. The first row represents ground truth labels.
+**EvalUtil**:  
 
- ConvScripts:
- 
-    Scripts to convert TREC output file (to the matrix format). Each script accepts a registry file,
-    which lists names of the files, which contain an output of a TREC evalution utility, e.g., trec_eval. 
-    Each such file should represent a single run.
+ * The test program itself: permtest. It accepts a matrix of performance scores (ERR, MAP, etc).  
+ * Each row of the matrix represent one retrieval method (called run in TREC terminology).  
+ * Column I represents performance scores for the I-th query.  
+ * In the case of binary classification, all values are 0s and 1s. The first row represents ground truth labels.  
 
- A working example:
+**ConvScripts**:
  
-    To see how it works 
+ * Scripts to convert TREC output file (to the matrix format).  
+ * Each script accepts a registry file, which lists names of the files, which contain an output of a TREC evalution utility, e.g., trec_eval.   
+ * Each such file should represent a single run.  
+
+**A working example:**
+
     
-    1) Compile the Eval util
-    2) Go to the directory SampleData
-    3) Run the shell script sample_run.sh
-    4) Read the comments inside the script
+ 1) Compile the Eval util  
+ 2) Go to the directory SampleData  
+ 3) Run the shell script sample_run.sh  
+ 4) Read the comments inside the script  
 
 
 
