@@ -15,7 +15,7 @@ cd -
 #    P_10   - Precision at ten
 #    Rprec  - R-precision
 #
-#    You can use the matrix FORMAT directly.
+#    You can use the MAXTRIX format directly:
 #    i) The number of rows in the matrix is equal to the number of methods
 #    ii) The number of columns in the matrix is equal to the number of queries
 #    iii) Row X, column Y represents a performance metric measured for query Y and system X
