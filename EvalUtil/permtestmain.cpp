@@ -363,10 +363,8 @@ int main(int argc, char * pArgv[]) {
             } else if (kTStat == eStatType) {
                 Perm.DoStat(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId, CTStat());
             } else if (kFScore == eStatType) {
-cout << "here" << endl;
                 Perm.DoStat(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId, CFScoreStat(labels));
             } else if (kAccuracy == eStatType) {
-cout << "here" << endl;
                 Perm.DoStat(PermNum, OutFile, bDoAdjustment, bOnlyBaselineAdj, BaselineId, CAccuracyStat(labels));
             }
         } else {
