@@ -25,11 +25,11 @@ Software description
 
 **EvalUtil**:  
 
- * The test program itself: permtest. It accepts a matrix of performance scores (ERR, MAP, etc).  
+ * The test program itself: _permtest_. It accepts a matrix of performance scores (ERR, MAP, etc).  
  * Each row of the matrix represent one retrieval method (called run in TREC terminology).  
  * Column I represents performance scores for the I-th query.  
  * In the case of binary classification, all values are 0s and 1s. **The first** row represents ground truth labels.  
- * An R-script SignTest.R which carries out a sign test for the purpose of binary classification. The input format is the same as for the utility: permtest for the purpose of **binary classification**. 
+ * An R-script _SignTest.R_ which carries out a sign test for the purpose of binary classification. The input format is the same as for the utility: permtest for the purpose of **binary classification**. 
 
 **ConvScripts**:
  
