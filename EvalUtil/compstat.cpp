@@ -113,7 +113,7 @@ CAccuracyStat::operator()(const vector<FloatType>& vVal1, const vector<FloatType
 
         throw runtime_error(err.str());
     }
-    return CalcAccuracy(vVal1, labels) - CalcFscore(vVal2, labels);
+    return CalcAccuracy(vVal1, labels) - CalcAccuracy(vVal2, labels);
 }
 
 FloatType 
