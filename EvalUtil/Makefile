@@ -3,7 +3,7 @@ all: permtest
 # gcc/clang optimization flags
 #CXXFLAGS+=-Wall -Ofast
 # gcc optimization flags
-CXXFLAGS+=-Wall -O5
+CXXFLAGS+=-Wall -O3
 # add debug info if required
 #CXXFLAGS+=-g
 

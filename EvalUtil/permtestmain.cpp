@@ -68,7 +68,7 @@ void Usage(const char *p, const char *err) {
                               "\t\t\t\tClosed testing: the maximum # of method combinations" << endl <<
                               "\t\t\t\tFrontier-based closed testing: an approximate upper bound to determine the stopping point" <<  endl << 
                               "\t\t\t[-t --threshpval <the minimal p-value for the adaptive approximation of the closed test> ] " <<  endl << 
-                              "\t\t\t[-p --maxpval <the maximum p-value, specifying maxpval allows one to decrease run-time by 10-20\% sometimes> ] " <<  endl << 
+                              "\t\t\t[-p --maxpval <the maximum p-value, specifying maxpval allows one to decrease run-time by 10-20% sometimes> ] " <<  endl << 
                               "\t\t\t[-i --pvalimp <the imputed p-value for the frontier-based method, should be greater than maxpval> ] " <<  endl << 
                               "\t\t\t[-s --stat <statistic: " STAT_MEAN ", " STAT_TSTAT ", " STAT_FSCORE ", " STAT_ACC " > default: " << DefaultStatType << "] " <<  endl << 
                               "\t\t\t\tNOTE: " STAT_FSCORE " and " STAT_ACC  " should be used for binary classification only!" << endl <<
