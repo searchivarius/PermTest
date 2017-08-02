@@ -14,7 +14,7 @@
 sub Usage {
     my $msg = shift;
     print STDERR "$msg\n";
-    print STDERR "Usage $0 <metric type: err, ndcg> <input file register: the list of input files> <output file> <optional: compute median?>\n"; 
+    print STDERR "Usage $0 <metric type: e.g., map> <input file register: the list of input files> <output file> <optional: compute median?>\n"; 
     die();
 };
 
