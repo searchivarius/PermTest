@@ -5,11 +5,11 @@ PermTest
 General information
 ------------------
 
-We provide software to statistical significance testing. This was originally designed for a standard IR evaluation, where one or more method is represented by vectors of real-value performance scores. However, it can be used to compare **any** equal-length series (of performance measurements). 
-
-Our software employs permutation algorithms for unadjusted pair-wise significance testing and testing with adjustment for multiple comparisons. The advantage of permutation algorithms is that they make relatively mild assumptions about statistical nature of data. In particular, they do not assume observations are normal i.i.d. variables.
+We provide software for statistical significance testing. This was originally designed for a standard IR evaluation, where one or more method is represented by vectors of real-value performance scores. However, it can be used to compare **any** equal-length series (of performance measurements). 
 
 This utility consumes a matrix input. Each row represents a single evaluation event. Each row element is an event-specific value of an effectiveness or efficiency metric such as classification accuracy, retrieval time. In IR, we commonly use the following metrics: ERR, NDCG, or MAP. 
+
+Our software employs permutation algorithms for unadjusted pair-wise significance testing and testing with adjustment for multiple comparisons. The advantage of permutation algorithms is that they make relatively mild assumptions about statistical nature of data. In particular, they do not assume observations are normal i.i.d. variables.
 
 The code is released under the Apache License Version 2.0 http://www.apache.org/licenses/.
 
