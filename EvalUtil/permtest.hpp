@@ -12,8 +12,6 @@
  */
 #ifndef PERMTEST_HPP
 #define PERMTEST_HPP
-#include <time.h>
-
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
@@ -77,7 +75,7 @@ bool ReadVec(const string& line, vector<T>& v)
 class CMultiplePerm {
 public:
     CMultiplePerm(unsigned VerbosityLevel = 0) : mVerbosityLevel(VerbosityLevel), mObservQty(0), mMethQty(0) {
-        InitRand(time(NULL));
+        InitRand(0);
     }
     void AddObservRow(const string& line); 
     // A speed-optimized version for DoStat with StatObj = CSampleMean
