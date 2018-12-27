@@ -28,7 +28,7 @@ Software description
 
 **EvalUtil**:  
 
- * The test program itself: _permtest_. It accepts a matrix of performance scores (ERR, MAP, etc). [We provide a Python3 wrapper](EvalUtil/PermTest.py). 
+ * The test program itself: _permtest_. It accepts a matrix of performance scores (ERR, MAP, etc). [We provide a Python3 wrapper for this test program](EvalUtil/PermTest.py). 
  * Each row of the matrix represent one retrieval method (called run in TREC terminology).  
  * Column I represents performance scores for the I-th query.  
  * In the case of binary classification, all values are 0s and 1s. **The first** row represents ground truth labels.  
